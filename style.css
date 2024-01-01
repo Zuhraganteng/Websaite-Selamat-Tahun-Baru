@@ -1,0 +1,135 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1a1a; /* Warna latar yang lebih gelap */
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.message {
+    position: absolute;
+    z-index: 2;
+    color: #f8e9a1; /* Warna teks yang hangat */
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 3s ease-out 5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.message h1 {
+    font-size: 3em;
+    margin-bottom: 0;
+    color: #ff6f61; /* Warna teks utama yang lebih romantis */
+}
+
+.long-text {
+    margin-top: 10px;
+    font-size: 1.2em;
+    max-width: 60%; /* Menyesuaikan lebar teks */
+    text-align: justify;
+    color: #f8e9a1;
+    left: 20%; /* Menambahkan ini untuk mendorong teks ke tengah */
+    right: 20%; /* Menambahkan ini juga */
+    position: absolute; /* Menggunakan positioning absolute */
+}
+.balloon-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Atur z-index agar tidak menutupi elemen lain */
+}
+
+.balloon {
+    width: 50px;
+    height: 70px;
+    background-color: pink;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -100px; /* Mulai dari bawah layar */
+    animation-name: floatBalloon;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes floatBalloon {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100vh); } /* Naik sejauh tinggi viewport */
+}
+.marquee {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.marquee-text {
+    position: absolute;
+    white-space: nowrap;
+    left: 100%;
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    from { left: 100%; }
+    to { left: -100%; }
+}
+.text-slider {
+    position: relative;
+    height: 100px; /* Sesuaikan dengan tinggi yang diinginkan */
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideAnimation 12s ease-in-out infinite;
+}
+
+/* Animasi untuk tiap slide */
+@keyframes slideAnimation {
+    0%, 100% { opacity: 0; transform: translateY(30px); }
+    10%, 30% { opacity: 1; transform: translateY(0px); }
+    40%, 60% { opacity: 1; transform: translateY(0px); }
+    70%, 90% { opacity: 1; transform: translateY(0px); }
+}
+
+/* Delay animasi untuk tiap slide */
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 4s; }
+.slide:nth-child(3) { animation-delay: 8s; }
+/* Tambahkan lebih banyak jika ada lebih banyak slide */
+.text-slider {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+
